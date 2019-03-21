@@ -1,5 +1,6 @@
-"""Title"""
+"""College Database."""
 # Matthew Abrary - A01070184
+# Kian Darakhshan - A01063190
 
 
 from flask import Flask
