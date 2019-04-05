@@ -5,6 +5,6 @@ services:
 
 install:
   - python setup.py install
-  - pip install pytest
+  - pip install -e .
 
 script: pytest
