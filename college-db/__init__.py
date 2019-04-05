@@ -1,10 +1,10 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    # create and configure the college-db
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -24,9 +24,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    from .auth import auth
+    app.register_blueprint(auth)
+
     # a simple page that says hello
-    @app.route('/')
+    @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    # redirect to login page
+    @app.route('/')
+    def redirect_to_login():
+        return redirect('auth/login')
 
     return app

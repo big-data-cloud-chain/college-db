@@ -1,0 +1,10 @@
+language: python
+
+services:
+  - mysql
+
+install:
+  - python setup.py install
+  - pip install pytest
+
+script: pytest
