@@ -1,0 +1,4 @@
+include college-db/schema.sql
+graft college-db/static
+graft college-db/templates
+global-exclude *.pyc
