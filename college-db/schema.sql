@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS User (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Student (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Course (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    credits INTEGER NOT NULL,
+    description TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Teacher (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Section (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_id INTEGER NOT NULL REFERENCES Course(id),
+    teacher_id INTEGER NOT NULL References Teacher(id)
+);
+
+CREATE TABLE IF NOT EXISTS Enrolment (
+    student_id INTEGER REFERENCES Student(id),
+    section_id INTEGER REFERENCES Section(id),
+    grade      NUMERIC NOT NULL,
+    PRIMARY KEY (student_id, section_id)
+);

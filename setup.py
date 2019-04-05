@@ -8,7 +8,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'flask',
-        'flask-security',
         'flask-WTF',
     ],
 )
