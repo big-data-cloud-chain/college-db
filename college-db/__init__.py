@@ -27,14 +27,15 @@ def create_app(test_config=None):
     from .auth import auth
     app.register_blueprint(auth)
 
+    from .dashboard import dashboard
+    app.register_blueprint(dashboard)
+    app.add_url_rule('/', endpoint='dashboard/index')
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
 
     # redirect to login page
-    @app.route('/')
-    def redirect_to_login():
-        return redirect(url_for('auth.login'))
 
     return app

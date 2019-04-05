@@ -9,5 +9,6 @@ setup(
     install_requires=[
         'flask',
         'flask-security',
+        'flask-WTF',
     ],
 )
