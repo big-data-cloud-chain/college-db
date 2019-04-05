@@ -1,14 +1,14 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    # create and configure the courser
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'college.sqlite'),
     )
 
     if test_config is None:
@@ -24,9 +24,22 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    from .auth import auth
+    app.register_blueprint(auth)
+
+    from .dashboard import dashboard
+    app.register_blueprint(dashboard)
+    app.add_url_rule('/', endpoint='dashboard/index')
+
+    # Registers the database with the application
+    from .db import init_app
+    init_app(app)
+
     # a simple page that says hello
-    @app.route('/')
+    @app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    # redirect to login page
 
     return app
