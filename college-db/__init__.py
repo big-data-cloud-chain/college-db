@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, redirect
+from flask import Flask, redirect, url_for
 
 
 def create_app(test_config=None):
@@ -35,6 +35,6 @@ def create_app(test_config=None):
     # redirect to login page
     @app.route('/')
     def redirect_to_login():
-        return redirect('auth/login')
+        return redirect(url_for('auth.login'))
 
     return app
