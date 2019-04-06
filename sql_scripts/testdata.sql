@@ -1,0 +1,13 @@
+INSERT INTO `Student` (`name`) VALUES ("Geoffrey Weiss"),("Sybil Burt"),("Wynne Tyler"),("Hoyt Weiss"),("Ian Guerra"),("Adam Manning"),("Allegra Shaffer"),("Sylvester Hall"),("Silas Bates"),("Ina Sims") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Mason Burris"),("Kyle Vinson"),("Warren Humphrey"),("Jena Lynn"),("Brady Morris"),("Xanthus Washington"),("Andrew Carney"),("Sonya Kennedy"),("Hope Robbins"),("Leslie Harmon") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Isaac Wade"),("Heidi Pacheco"),("Aladdin Whitaker"),("Hall Herrera"),("Jonas Weiss"),("Shoshana Ashley"),("Rahim Jackson"),("Beck Whitney"),("Addison Kerr"),("Jasmine Hebert") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Dominic Parks"),("Bryar Dean"),("Hammett Shaw"),("Samantha Wyatt"),("Lila Flowers"),("Amelia Lang"),("Hyatt Mccall"),("Erasmus Alston"),("Tasha Jackson"),("Mary Best") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Callum Todd"),("Xaviera Solomon"),("Allistair Shepard"),("Nasim Fowler"),("Keegan Nguyen"),("Graham Roach"),("Jameson Kerr"),("Ezekiel Hamilton"),("Hilel Odonnell"),("Stone Beach") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Orson Trevino"),("Mark Stark"),("Mari Jackson"),("Blythe Avery"),("Brendan Mayer"),("Dexter Beard"),("Macy Fox"),("Melvin Padilla"),("Arthur Warner"),("Tiger Fox");
+INSERT INTO `Student` (`name`) VALUES ("Justine Boyle"),("Galena Perkins"),("Sebastian Gay"),("Cody Ortega"),("Ciaran Fletcher"),("Jesse Clarke"),("Cathleen Miller"),("Macaulay Burke"),("Camden Lester"),("Ulla Talley") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Doris Dillon"),("Justina Mooney"),("Blossom Reyes"),("Teagan Melendez"),("Amos Stevens"),("Alfonso Sanders"),("Ivor Sexton"),("Minerva Wooten"),("Raymond Walters"),("Dante Fields") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Quail Blevins"),("Quinlan Murray"),("Imogene Webster"),("Ila Rice"),("Lee Rivera"),("Giselle Fischer"),("Rowan Dodson"),("Eden Miranda"),("Drew Sharpe"),("Owen Molina") ON CONFLICT (name) DO NOTHING;
+INSERT INTO `Student` (`name`) VALUES ("Rhonda Mason"),("Sean Romero"),("Rajah Burch"),("Leroy Cross"),("Ulric Hopkins"),("Bernard Ewing"),("Regan Sexton"),("Keaton Witt"),("Rosalyn Peck"),("Hu Jennings") ON CONFLICT (name) DO NOTHING;
+
+INSERT INTO Course (title, credits, description) VALUES ("COMP 7481", 3, "Selected Topics"), ("COMP 8082", 3, "Project Management"), ("COMP 8006", 3, "Network Security Administration"), ("COMP 8005", 3, "Network Applications Development"), ("LIBS 7002", 3, "Applied Ethics");
+
