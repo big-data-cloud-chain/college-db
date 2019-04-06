@@ -4,10 +4,12 @@
     <h1>
         {% block title %}
             {% if g.user %}
-                {{ g.user }}Dashboard
+                {{ g.user['username'] }} Dashboard
             {% endif %}
         {% endblock %}
     </h1>
 
+    {% block content %}
+    {% endblock %}
 {% endblock %}
 

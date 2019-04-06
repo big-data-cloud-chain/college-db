@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-
-{% block header %}
-    <h1>{% block title %} Register {% endblock %}</h1>
-{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-    <form method="post">
-        {{ form.csrf_token }}
-        {{ form.username.label }}{{ form.username }}
-        {{ form.password.label }}{{ form.password }}
-        <div class="row">
-            <input class="button-primary" type="submit" value="Register"/>
-        </div>
-    </form>
+    <div class="container">
+        {% block header %}
+            <h1>{% block title %} Register {% endblock %}</h1>
+        {% endblock %}
+        <form class="form" method="post" role="form">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            <input class="btn btn-primary" type="submit" value="Register"/>
+        </form>
+    </div>
 {% endblock %}
