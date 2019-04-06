@@ -23,7 +23,6 @@ def register():
     form = LoginForm()
     if form.validate_on_submit():
         db = get_db()
-        # insert the new user into the database
         error = None
 
         username = form.username.data

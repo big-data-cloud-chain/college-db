@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block header %}
     <h1>
@@ -8,8 +8,16 @@
             {% endif %}
         {% endblock %}
     </h1>
-
-    {% block content %}
-    {% endblock %}
+{% endblock %}
+{% block content %}
+    <section class="panel panel-default">
+        <div class="panel-heading">Grades</div>
+        <ul class="list-group">
+            {% for item in session.grades %}
+                <li class="list-group-item">{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{{ session.grades }}
 {% endblock %}
 

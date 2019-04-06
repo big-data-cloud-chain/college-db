@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Section (
 );
 
 CREATE TABLE IF NOT EXISTS Enrolment (
-    student_id INTEGER REFERENCES Student(id),
+    student_id INTEGER REFERENCES User(id),
     section_id INTEGER REFERENCES Section(id),
     grade      NUMERIC NOT NULL,
     PRIMARY KEY (student_id, section_id)
