@@ -71,6 +71,12 @@ def login():
     return render_template('auth/login.html', form=form)
 
 
+@auth.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('dashboard.index'))
+
+
 def required_roles(*roles):
     def wrapper(f):
         @wraps(f)
