@@ -1,28 +1,25 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>{% block title %}{% endblock %} - University</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-</head>
-<body class="container">
-<header>
-<nav class="nav">
-        <li class="nav-item">Courser</li>
-        {% if g.user %}
-            <span>{{ g.user['username'] }}</span>
-            <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
-        {% else %}
-            <a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a>
-            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
-        {% endif %}
-</nav>
-</header>
-<section class="main">
-    {% block header %}{% endblock %}
-    {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-    {% block content %}{% endblock %}
-</section>
-</body>
-</html>
+{% extends "bootstrap/base.html" %}
+{% block title %} Base Page {% endblock %}
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <span class="navbar-brand">Courser</span>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                {% if g.user %}
+                    <li class="nav-item"><span>{{ g.user['username'] }}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a></li>
+                    <li><a class="nav-link" href="{{ url_for('auth.register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+{% block content %}
+    <h1>Hello Bootstrap</h1>
+{% endblock %}
