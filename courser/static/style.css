@@ -1,0 +1,37 @@
+.container {
+    display: grid;
+
+    grid-template-columns: 3fr 1fr;
+
+    grid-template-areas:
+        "header header"
+        "main main"
+        "footer footer";
+
+    grid-gap: 60px;
+}
+header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+li {
+    list-style: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.main {
+    grid-area: main;
+}
+.sidebar {
+    grid-area: sidebar;
+}
+footer {
+    grid-area: footer;
+}
