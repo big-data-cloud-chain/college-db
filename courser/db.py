@@ -45,10 +45,3 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-
-def insert_into_user(username, password):
-    db = get_db()
-    res = db.execute('INSERT INTO User (username, password)',
-                           (username, generate_password_hash(password))
-                           )
-    db.commit()

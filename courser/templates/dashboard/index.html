@@ -3,8 +3,11 @@
 {% block header %}
     <h1>
         {% block title %}
-            Dashboard
+            {% if g.user %}
+                {{ g.user }}Dashboard
+            {% endif %}
         {% endblock %}
     </h1>
+
 {% endblock %}
 

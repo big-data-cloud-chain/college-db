@@ -48,17 +48,23 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = query_db('select * from user where username = ?', [form.username], one=True)
+        username = form.username.data
+        password = form.password.data
+        db = get_db()
+        user = db.execute(
+            'select * from User where username = ?',
+            (username,)
+        ).fetchone()
         error = None
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], form.password):
+        elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('dashboard.index'))
 
         flash(error)
 
@@ -87,3 +93,14 @@ def login_required(view):
 def get_current_user_role():
     return g.user.role
 
+
+@auth.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+            'SELECT * FROM User WHERE id = ?', [user_id]
+        ).fetchone()

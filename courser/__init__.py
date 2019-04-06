@@ -24,6 +24,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # Registers the database with the application
+    from .db import init_app
+    init_app(app)
+
     from .auth import auth
     app.register_blueprint(auth)
 
@@ -31,9 +35,6 @@ def create_app(test_config=None):
     app.register_blueprint(dashboard)
     app.add_url_rule('/', endpoint='dashboard/index')
 
-    # Registers the database with the application
-    from .db import init_app
-    init_app(app)
 
     # a simple page that says hello
     @app.route('/hello')
