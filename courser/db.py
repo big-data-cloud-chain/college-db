@@ -21,10 +21,14 @@ def close_db(e=None):
         db.close()
 
 
-def init_db():
+def init_db(testdata=True):
     db = get_db()
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf-8'))
+    # Load testing data
+    if testdata:
+        with current_app.open_resource('testdata.sql') as f:
+            db.executescript(f.read().decode('utf-8'))
 
 
 @click.command('init-db')
