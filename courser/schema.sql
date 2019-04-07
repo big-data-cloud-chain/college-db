@@ -4,6 +4,18 @@ CREATE TABLE IF NOT EXISTS User (
     password TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS Role (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT UNIQUE NOT NULL,
+    description TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS UserRole (
+    user_id INTEGER NOT NULL REFERENCES User(id),
+    role_id INTEGER NOT NULL REFERENCES Role(id),
+    PRIMARY KEY (user_id, role_id)
+);
+
 CREATE TABLE IF NOT EXISTS Student (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
@@ -28,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Section (
 );
 
 CREATE TABLE IF NOT EXISTS Enrolment (
-    student_id INTEGER REFERENCES Student(id),
+    student_id INTEGER REFERENCES User(id),
     section_id INTEGER REFERENCES Section(id),
     grade      NUMERIC NOT NULL,
     PRIMARY KEY (student_id, section_id)

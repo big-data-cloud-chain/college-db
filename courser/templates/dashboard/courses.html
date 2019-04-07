@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                {% for column in columns %}
+                    {% if column != "id"  %}
+                    <th>{{ column.capitalize() }}</th>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.credits }}</td>
+                    <td>{{ course.description }}</td>
+                    <td><a href="{{ url_for('dashboard.enroll') }}">Enroll</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
