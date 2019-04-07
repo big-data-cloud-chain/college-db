@@ -3,8 +3,6 @@
   <component name="dataSourceStorageLocal">
     <data-source name="college" uuid="d22b9678-5817-4e54-a38f-ef04eadcd3d6">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
-      <auth-required>false</auth-required>
-      <introspection-schemas>*:*</introspection-schemas>
     </data-source>
   </component>
 </project>

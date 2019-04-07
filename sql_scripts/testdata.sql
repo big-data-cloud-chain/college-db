@@ -22,3 +22,5 @@ INSERT INTO Teacher (name) VALUES ("Brandon French"),("Kevin Gray"),("Mason Shar
 INSERT INTO Teacher (name) VALUES ("Duncan Dickerson"),("Merrill Franklin"),("Lila Gamble"),("Macaulay Bean"),("Mason Moore"),("Madonna Knapp"),("David Castaneda"),("Hammett Cline"),("Lucius Mullins"),("Lyle Cross");
 INSERT INTO Teacher (name) VALUES ("Venus Pollard"),("Keiko Prince"),("Libby Giles"),("Haley Hicks"),("Ashton Gentry"),("Sylvester Wright"),("Chester Moran"),("Hayes Frye"),("Griffith Valdez"),("Eric Hines");
 INSERT INTO Teacher (name) VALUES ("Leila Buchanan"),("Joshua Orr"),("Keane Perry"),("April Burch"),("Hu Tate"),("Jakeem Mathews"),("Zenaida Bryan"),("Blair Norman"),("Rae Rodgers"),("Ignacia Hebert");
+
+INSERT INTO Section (course_id, teacher_id) VALUES (1, 1),(2,2),(3,3);

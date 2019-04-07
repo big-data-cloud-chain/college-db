@@ -21,10 +21,26 @@ def courses():
     return render_template('dashboard/courses.html', columns=column_names, courses=all_courses.fetchall())
 
 
-@dashboard.route('/enroll')
+@dashboard.route('/enroll', methods=('GET', 'POST'))
 @login_required
 def enroll():
-    return render_template('dashboard/enroll.html')
+    if request.method == 'GET':
+        course_id = request.args.get('course_id')
+        course = get_db().execute(
+            'SELECT c.title '
+            'FROM Course AS c '
+            'WHERE c.id = ? ', [course_id]
+        ).fetchone()
+        user_id = session.get('user_id')
+        teacher = get_db().execute(
+            'SELECT t.name '
+            'FROM Teacher AS t '
+            'INNER JOIN Section AS s '
+            'ON s.teacher_id = t.id AND s.course_id = ? ',
+            [course_id]
+        ).fetchone()
+    # Check if the currently logged in user is already enrolled in the course
+    return render_template('dashboard/enroll.html', course=course, teacher=teacher)
 
 
 @dashboard.route('/')

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block content %}
+{% block title %} Courses {% endblock %}
+{% block page_content %}
     <div class="table-responsive">
         <table class="table">
             <tr>
@@ -8,13 +9,14 @@
                     <th>{{ column.capitalize() }}</th>
                     {% endif %}
                 {% endfor %}
+                <th>Enroll</th>
             </tr>
             {% for course in courses %}
                 <tr>
                     <td>{{ course.title }}</td>
                     <td>{{ course.credits }}</td>
                     <td>{{ course.description }}</td>
-                    <td><a href="{{ url_for('dashboard.enroll') }}">Enroll</a></td>
+                    <td><a href="{{ url_for('dashboard.enroll', course_id=course.id) }}">Enroll</a></td>
                 </tr>
             {% endfor %}
         </table>
