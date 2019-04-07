@@ -12,12 +12,16 @@
 {% block content %}
     <section class="panel panel-default">
         <div class="panel-heading">Grades</div>
+        {% if session.grades %}
         <ul class="list-group">
             {% for item in session.grades %}
                 <li class="list-group-item">{{ item }}</li>
             {% endfor %}
         </ul>
+        {% else %}
+            <p>No grades found</p>
+        {% endif %}
+
     </section>
-{{ session.grades }}
 {% endblock %}
 
