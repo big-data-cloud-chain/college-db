@@ -93,6 +93,8 @@ def login_required(view):
     def wrapped(**kwargs):
         if g.user is None:
             return redirect(url_for('auth.login'))
+        return view(**kwargs)
+    return wrapped
 
 
 def get_current_user_role():

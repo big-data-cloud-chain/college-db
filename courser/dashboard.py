@@ -11,14 +11,26 @@ from .auth import login_required
 dashboard = Blueprint('dashboard', __name__)
 
 
-@dashboard.route('/')
-def index():
-    user_id = session.get('user_id')
-    if user_id is None:
-        flash("Must be logged in")
-        return redirect(url_for('auth.login'))
+@dashboard.route('/courses')
+@login_required
+def courses():
+    db = get_db()
+    all_courses = db.execute('SELECT * FROM Course')
+    # gets the column names so they're not hardcoded in the template
+    column_names = [desc[0] for desc in all_courses.description]
+    return render_template('dashboard/courses.html', columns=column_names, courses=all_courses.fetchall())
 
-    grades = get_grades(user_id)
+
+@dashboard.route('/enroll')
+@login_required
+def enroll():
+    return render_template('dashboard/enroll.html')
+
+
+@dashboard.route('/')
+@login_required
+def index():
+    grades = get_grades(session['user_id'])
     if grades is not None:
         session['user_grades'] = grades
 

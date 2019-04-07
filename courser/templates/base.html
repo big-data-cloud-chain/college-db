@@ -2,7 +2,7 @@
 {% block title %} Base Page {% endblock %}
 {% block navbar %}
     <nav class="navbar navbar-default">
-        <span class="navbar-brand">Courser</span>
+        <a class="navbar-brand" href="{{ url_for('dashboard.index') }}">Courser</a>
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,6 +11,7 @@
             <ul class="nav navbar-nav">
                 {% if g.user %}
                     <li class="nav-item"><a class="nav-link">{{ g.user['username'] }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard.courses') }}">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a></li>
                 {% else %}
                     <li><a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a></li>
@@ -21,5 +22,4 @@
     </nav>
 {% endblock %}
 {% block content %}
-    <h1>Hello Bootstrap</h1>
 {% endblock %}
