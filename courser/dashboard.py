@@ -39,7 +39,6 @@ def enroll():
             'ON s.teacher_id = t.id AND s.course_id = ? ',
             [course_id]
         ).fetchone()
-    # Check if the currently logged in user is already enrolled in the course
     return render_template('dashboard/enroll.html', course=course, teacher=teacher)
 
 
