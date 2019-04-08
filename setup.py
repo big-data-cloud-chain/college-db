@@ -10,5 +10,6 @@ setup(
         'flask',
         'flask-WTF',
         'flask-bootstrap',
+        'flask-mysql'
     ],
 )
