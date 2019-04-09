@@ -42,19 +42,32 @@ def enroll():
     return render_template('dashboard/enroll.html', course=course, teacher=teacher)
 
 
+@dashboard.route('/grades')
+@login_required
+def grades():
+    user_id = g.user['id']
+    grade_cursor = get_db().execute(
+        'SELECT c.title, e.section_id, e.grade '
+        'FROM Enrolment AS e '
+        'INNER JOIN Section AS s '
+        'ON e.section_id = s.id '
+        'INNER JOIN Course AS c '
+        'ON c.id = s.course_id '
+        'WHERE e.student_id = ?'
+        , [user_id]
+    )
+    return render_template('dashboard/grades.html', grades=grade_cursor.fetchall())
+
+
 @dashboard.route('/')
 @login_required
 def index():
-    grades = get_grades(session['user_id'])
-    if grades is not None:
-        session['user_grades'] = grades
-
     return render_template('dashboard/index.html')
 
 
 def get_grades(id):
     grades = get_db().execute(
-        'SELECT en.grade FROM Enrolment AS en '
+        'SELECT co.title, en.grade FROM Enrolment AS en '
         'INNER JOIN Section AS sec '
         'ON en.section_id = sec.id '
         'INNER JOIN Course AS co '

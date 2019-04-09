@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Grades {% endblock %}
+{% block page_content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Grade</th>
+            </tr>
+            {% if grades %}
+            {% for grade in grades %}
+                <tr>
+                    <td>{{ grade.title }}</td>
+                    <td>{{ grade.section_id }}</td>
+                    <td>{{ grade.grade }}</td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}

@@ -23,4 +23,5 @@ INSERT OR IGNORE INTO Teacher (name) VALUES ("Duncan Dickerson"),("Merrill Frank
 INSERT OR IGNORE INTO Teacher (name) VALUES ("Venus Pollard"),("Keiko Prince"),("Libby Giles"),("Haley Hicks"),("Ashton Gentry"),("Sylvester Wright"),("Chester Moran"),("Hayes Frye"),("Griffith Valdez"),("Eric Hines");
 INSERT OR IGNORE INTO Teacher (name) VALUES ("Leila Buchanan"),("Joshua Orr"),("Keane Perry"),("April Burch"),("Hu Tate"),("Jakeem Mathews"),("Zenaida Bryan"),("Blair Norman"),("Rae Rodgers"),("Ignacia Hebert");
 
-INSERT INTO Section (course_id, teacher_id) VALUES (1, 1),(2,2),(3,3);
+INSERT OR IGNORE INTO Section (course_id, teacher_id) VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
+
