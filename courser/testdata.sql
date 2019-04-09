@@ -23,5 +23,10 @@ INSERT OR IGNORE INTO Teacher (name) VALUES ("Duncan Dickerson"),("Merrill Frank
 INSERT OR IGNORE INTO Teacher (name) VALUES ("Venus Pollard"),("Keiko Prince"),("Libby Giles"),("Haley Hicks"),("Ashton Gentry"),("Sylvester Wright"),("Chester Moran"),("Hayes Frye"),("Griffith Valdez"),("Eric Hines");
 INSERT OR IGNORE INTO Teacher (name) VALUES ("Leila Buchanan"),("Joshua Orr"),("Keane Perry"),("April Burch"),("Hu Tate"),("Jakeem Mathews"),("Zenaida Bryan"),("Blair Norman"),("Rae Rodgers"),("Ignacia Hebert");
 
+INSERT OR IGNORE INTO User (username, password) VALUES ("Will", "pbkdf2:sha256:150000$RoIeTP8e$2084f2c7cae604c4bfae1d66f4234e5291ecdb9e983cbeed37926816eebe1b53");
+
 INSERT OR IGNORE INTO Section (course_id, teacher_id) VALUES (1,1),(2,2),(3,3),(4,4),(5,5);
 
+INSERT OR IGNORE INTO Enrolment (student_id, section_id, grade) VALUES (1, 1, (SELECT abs(random() % 100)));
+INSERT OR IGNORE INTO Enrolment (student_id, section_id, grade) VALUES (1, 2, (SELECT abs(random() % 100)));
+INSERT OR IGNORE INTO Enrolment (student_id, section_id, grade) VALUES (1, 3, (SELECT abs(random() % 100)));
